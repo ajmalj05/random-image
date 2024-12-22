@@ -3,31 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Get First and Last Name from Form</title>
+    <title>Display Random Image</title>
 </head>
 <body>
 
-    <h3>Get First and Last Name from the Form</h3>
+    <h3>Display Random Image</h3>
 
-    <!-- Form with First and Last Name Fields -->
-    <form id="form1" onsubmit="getFormValues(event)">
-        First name: <input type="text" name="fname" value="David"><br>
-        Last name: <input type="text" name="lname" value="Beckham"><br>
-        <input type="submit" value="Submit">
-    </form>
+    <!-- Button to Show Random Image -->
+    <button onclick="showRandomImage()">Show Random Image</button>
+    
+    <!-- Image Display -->
+    <br><br>
+    <img id="randomImage" src="" alt="Random Image" width="0" height="0">
 
     <script>
-        // Function to get the values of first and last names
-        function getFormValues(event) {
-            // Prevent form from submitting and reloading the page
-            event.preventDefault();
+        // Array of image objects with src, width, and height properties
+        var images = [
+            {
+                src: "http://farm4.staticflickr.com/3691/11268502654_f28f05966c_m.jpg",
+                width: "240",
+                height: "160"
+            },
+            {
+                src: "http://farm1.staticflickr.com/33/45336904_1aef569b30_n.jpg",
+                width: "320",
+                height: "195"
+            },
+            {
+                src: "http://farm6.staticflickr.com/5211/5384592886_80a512e2c9.jpg",
+                width: "500",
+                height: "343"
+            }
+        ];
+
+        // Function to display a random image
+        function showRandomImage() {
+            // Generate a random index to pick a random image from the array
+            var randomIndex = Math.floor(Math.random() * images.length);
+            var selectedImage = images[randomIndex];
+
+            // Get the image element
+            var imgElement = document.getElementById("randomImage");
             
-            // Get the form values
-            var firstName = document.forms["form1"]["fname"].value;
-            var lastName = document.forms["form1"]["lname"].value;
-            
-            // Display the values in an alert
-            alert("First Name: " + firstName + "\nLast Name: " + lastName);
+            // Set the src, width, and height of the image
+            imgElement.src = selectedImage.src;
+            imgElement.width = selectedImage.width;
+            imgElement.height = selectedImage.height;
         }
     </script>
 
