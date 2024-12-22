@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get First and Last Name from Form</title>
+</head>
+<body>
+
+    <h3>Get First and Last Name from the Form</h3>
+
+    <!-- Form with First and Last Name Fields -->
+    <form id="form1" onsubmit="getFormValues(event)">
+        First name: <input type="text" name="fname" value="David"><br>
+        Last name: <input type="text" name="lname" value="Beckham"><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        // Function to get the values of first and last names
+        function getFormValues(event) {
+            // Prevent form from submitting and reloading the page
+            event.preventDefault();
+            
+            // Get the form values
+            var firstName = document.forms["form1"]["fname"].value;
+            var lastName = document.forms["form1"]["lname"].value;
+            
+            // Display the values in an alert
+            alert("First Name: " + firstName + "\nLast Name: " + lastName);
+        }
+    </script>
+
+</body>
+</html>
